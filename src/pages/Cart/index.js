@@ -9,17 +9,17 @@ import { formattedPrice } from '../../utils/format';
 
 import { Container, ProductTable, Total } from './styles';
 
-function Cart({ cart, removeFromCart, updateAmount, total }) {
+function Cart({ cart, removeFromCart, updateAmountRequest, total }) {
   function handleDeleteProduct(product) {
     removeFromCart(product.id);
   }
 
   function increment(product) {
-    updateAmount(product.id, product.amount + 1);
+    updateAmountRequest(product.id, product.amount + 1);
   }
 
   function decrement(product) {
-    updateAmount(product.id, product.amount - 1);
+    updateAmountRequest(product.id, product.amount - 1);
   }
 
   return (
@@ -66,8 +66,8 @@ function Cart({ cart, removeFromCart, updateAmount, total }) {
             </td>
 
             <td>
-              <button type="button" onClick={() => {handleDeleteProduct(product)}}>
-                <MdDelete size={20} color="#7159c1" />
+              <button className="delete" type="button" onClick={() => {handleDeleteProduct(product)}}>
+                <MdDelete size={22} color="#7159c1" />
               </button>
             </td>
           </tr>
